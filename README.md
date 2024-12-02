@@ -1,4 +1,4 @@
-# basic starter code
+# Aiglow
 Made for the [minihackathon](https://www.minihackathon.de/) by Kevin Chromik.
 
 This project uses:
