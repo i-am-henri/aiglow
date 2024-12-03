@@ -11,6 +11,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {children}
             </SidebarInset>
         </SidebarProvider>
-
     )
 }

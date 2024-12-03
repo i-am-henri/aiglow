@@ -1,7 +1,10 @@
 import Header from "@/components/header"
 import { PlusIcon } from "lucide-react"
+import Link from "next/link"
+import { Suspense } from "react"
+import { getDocuments } from "./action"
 
-export default function Page() {
+export default async function Page() {
   return (
     <>
       <Header breadcrumbs={[{ link: "Home", href: "/dashboard" }]} />
@@ -13,11 +16,28 @@ export default function Page() {
           <div className="flex items-center justify-center rounded-md border cursor-pointer hover:scale-[0.96] transition-all  border-border bg-muted/40 p-4 w-3xl aspect-video">
             <PlusIcon className="size-4 text-muted-foreground" />
           </div>
-          <div className="flex items-center justify-center rounded-md border cursor-pointer hover:scale-[0.96] transition-all  border-border bg-muted/40 p-4 w-3xl aspect-video">
-            Geschichte
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Documents />
+          </Suspense>
         </div>
       </div>
+    </>
+  )
+}
+
+async function Documents() {
+  const documents = await getDocuments()
+  return (
+    <>
+      {
+        documents.map((document) => (
+          <Link href={`/dashboard/${document.id}`} key={document.id} className="flex items-center justify-center rounded-md border cursor-pointer hover:scale-[0.96] transition-all  border-border bg-muted/40 p-4 w-3xl aspect-video">
+            <a href={`/dashboard/${document.id}`}>
+              {document.name}
+            </a>
+          </Link>
+        ))
+      }
     </>
   )
 }
