@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar"
+import { SettingsDialog } from "@/components/settings-dialog"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -36,6 +37,7 @@ export default function Page() {
           <h2 className="text-lg font-medium">
             Welcome back! - we missed you!
           </h2>
+          <SettingsDialog />
         </div>
       </SidebarInset>
     </SidebarProvider>

@@ -1,5 +1,7 @@
 "use client"
-import { useSidebar } from "./ui/sidebar";
+import { GalleryVerticalEnd } from "lucide-react";
+import { useSettingsSidebarPageStore } from "./settings-dialog";
+import { SidebarMenuButton } from "./ui/sidebar";
 
 export function TeamLogo({
   team
@@ -9,17 +11,23 @@ export function TeamLogo({
     logo: string
   }
 }) {
-  const { open } = useSidebar()
+  const { page, setPage } = useSettingsSidebarPageStore()
   return (
-    <div
-      className="gap-2 p-2 flex items-center "
+    <SidebarMenuButton
+      onClick={() => setPage("team")}
+      onKeyDown={() => setPage("team")}
+      size="lg"
+      className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
     >
-      <div className="flex size-6 items-center justify-center rounded-sm border">
-        <div className="p-1 text-sm shrink-0 rounded-md bg-blue-500">
-          {team.logo}
-        </div>
+      <div
+        className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+        <GalleryVerticalEnd className="size-4" />
       </div>
-      {open ? <div className="text-sm">{team.name}</div> : null}
-    </div>
+      <div className="grid flex-1 text-left text-sm leading-tight">
+        <span className="truncate font-semibold">
+          {team.name}
+        </span>
+      </div>
+    </SidebarMenuButton>
   )
 }
