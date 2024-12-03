@@ -7,13 +7,11 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogTitle,
-    DialogTrigger,
+    DialogTitle
 } from "@/components/ui/dialog"
 import {
     Sidebar,
@@ -68,9 +66,6 @@ export function SettingsDialog() {
     console.log(page)
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
-                <Button size="sm" className="w-min">Open Dialog</Button>
-            </DialogTrigger>
             <DialogContent className="overflow-hidden p-0 md:max-h-[500px] md:max-w-[700px] lg:max-w-[800px]">
                 <DialogTitle className="sr-only">Settings</DialogTitle>
                 <DialogDescription className="sr-only">
@@ -116,14 +111,6 @@ export function SettingsDialog() {
                                 </Breadcrumb>
                             </div>
                         </header>
-                        <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pt-0">
-                            {Array.from({ length: 10 }).map((_, i) => (
-                                <div
-                                    key={i.toString()}
-                                    className="aspect-video max-w-3xl rounded-xl bg-muted/50"
-                                />
-                            ))}
-                        </div>
                     </main>
                 </SidebarProvider>
             </DialogContent>
