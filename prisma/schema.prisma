@@ -24,6 +24,7 @@ model User {
     Account       Account[]
     Member        Member[]
     Invitation    Invitation[]
+    Document      Document[]
 
     @@unique([email])
     @@unique([username])
@@ -115,4 +116,41 @@ model Invitation {
     user           User         @relation(fields: [inviterId], references: [id], onDelete: Cascade)
 
     @@map("invitation")
+}
+
+model Document {
+    id        String   @id
+    name      String
+    content   String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId    String
+    Assets    Asset[]
+    Page      Page[]
+}
+
+model Page {
+    id         String   @id
+    document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+    documentId String
+    content    String
+    createdAt  DateTime
+    updatedAt  DateTime
+}
+
+model Asset {
+    id         String    @id
+    name       String
+    content    String?
+    image      String?
+    size       Int?
+    type       AssetType
+    Document   Document? @relation(fields: [documentId], references: [id])
+    documentId String?
+}
+
+enum AssetType {
+    image
+    text
 }
