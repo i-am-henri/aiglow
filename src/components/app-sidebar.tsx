@@ -16,7 +16,7 @@ import {
 import { Frame, PieChart, SquareTerminal } from "lucide-react"
 
 
-export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>

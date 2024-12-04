@@ -22,7 +22,7 @@ export default function Header({
                 <Breadcrumb>
                     <BreadcrumbList>
                         {breadcrumbs.map((item, index) => (
-                            <>
+                            <div key={item.link} className="hidden md:flex items-center gap-2.5">
                                 <BreadcrumbItem key={item.link} className="hidden md:block">
                                     <BreadcrumbLink href={item.href}>
                                         {item.link}
@@ -31,7 +31,7 @@ export default function Header({
                                 {index !== breadcrumbs.length - 1 && (
                                     <BreadcrumbSeparator key={`${index.toString()}-separator`} className="hidden md:block" />
                                 )}
-                            </>
+                            </div>
                         ))}
                     </BreadcrumbList>
                 </Breadcrumb>

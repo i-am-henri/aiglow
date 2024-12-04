@@ -13,9 +13,9 @@ export default async function Page() {
           Welcome back! - we missed you!
         </h2>
         <div className="flex gap-4 overflow-x-auto">
-          <div className="flex items-center justify-center rounded-md border cursor-pointer hover:scale-[0.96] transition-all  border-border bg-muted/40 p-4 w-3xl aspect-video">
+          <Link href="/dashboard/new" className="flex items-center justify-center rounded-md border cursor-pointer hover:scale-[0.96] transition-all  border-border bg-muted/40 p-4 w-3xl aspect-video">
             <PlusIcon className="size-4 text-muted-foreground" />
-          </div>
+          </Link>
           <Suspense fallback={<div>Loading...</div>}>
             <Documents />
           </Suspense>
@@ -32,9 +32,7 @@ async function Documents() {
       {
         documents.map((document) => (
           <Link href={`/dashboard/${document.id}`} key={document.id} className="flex items-center justify-center rounded-md border cursor-pointer hover:scale-[0.96] transition-all  border-border bg-muted/40 p-4 w-3xl aspect-video">
-            <a href={`/dashboard/${document.id}`}>
-              {document.name}
-            </a>
+            {document.name}
           </Link>
         ))
       }
